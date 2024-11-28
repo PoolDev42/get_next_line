@@ -6,13 +6,11 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 20:20:00 by lcalero           #+#    #+#             */
-/*   Updated: 2024/11/28 19:43:42 by lcalero          ###   ########.fr       */
+/*   Updated: 2024/11/28 22:00:51 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-#define BUFFER_SIZE 1024
 
 #include <string.h>
 #include <stdio.h>
@@ -28,16 +26,20 @@ char	*get_next_line(int fd)
 	if (!nb_bytes)
 		return (NULL);
 	if (!remainder)
-		remainder = buffer;
+		remainder = strdup(buffer);
 	else
+	{
 		remainder = strchr(remainder, '\n');
-	printf("remainder : %s\n", remainder);
+		if (!remainder)
+			return (NULL);
+	}
 	buffer[nb_bytes] = '\0';
+	if (remainder[0] == '\n')
+		remainder++;
 	line = ft_substr(remainder, 0, find_next_null(remainder) + 1);
 	if (!line)
 		return (NULL);
-	printf("%s", line);
-	return (0);
+	return (line);
 }
 
 #include <fcntl.h>
@@ -45,8 +47,19 @@ int	main(void)
 {
 	int fd = open("test.txt", O_RDONLY);
 	char* line = get_next_line(fd);
+	printf("%s", line);
 	free(line);
 	line = get_next_line(fd);
+	printf("%s", line);
+	free(line);
+	line = get_next_line(fd);
+	printf("%s", line);
+	free(line);
+	line = get_next_line(fd);
+	printf("%s", line);
+	free(line);
+	line = get_next_line(fd);
+	printf("%s", line);
 	free(line);
 	close(fd);
 	return (0);

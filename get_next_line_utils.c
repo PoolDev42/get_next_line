@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 20:20:21 by lcalero           #+#    #+#             */
-/*   Updated: 2024/11/28 19:31:40 by lcalero          ###   ########.fr       */
+/*   Updated: 2024/11/28 22:05:38 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,8 @@ int	find_next_null(char *s)
 	int	i;
 	
 	i = 0;
-	while (s[i])
-	{
-		if (s[i] == '\n')
-			return (i);
+	while (s[i] && s[i] != '\n')
 		i++;
-	}
 	return (i);
 }
 
