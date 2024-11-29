@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 20:20:00 by lcalero           #+#    #+#             */
-/*   Updated: 2024/11/29 13:37:00 by lcalero          ###   ########.fr       */
+/*   Updated: 2024/11/29 13:59:45 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,7 @@ char	*ft_strchr(const char *s, int c)
 	while (i >= 0)
 	{
 		if (s[i] == (char)c)
-		{
 			firstindex = i;
-		}
 		i--;
 	}
 	if (firstindex == -1)
@@ -76,24 +74,15 @@ char	*get_next_line(int fd)
 }
 
 /*#include <fcntl.h>
+#include <stdio.h>
 int	main(void)
 {
 	int fd = open("test.txt", O_RDONLY);
-	char* line = get_next_line(fd);
-	printf("%s", line);
-	free(line);
-	line = get_next_line(fd);
-	printf("%s", line);
-	free(line);
-	line = get_next_line(fd);
-	printf("%s", line);
-	free(line);
-	line = get_next_line(fd);
-	printf("%s", line);
-	free(line);
-	line = get_next_line(fd);
-	printf("%s", line);
-	free(line);
-	close(fd);
+	char *line;
+	while ((line = get_next_line(fd)) != NULL)
+	{
+		printf("%s", line);
+		free(line);
+	}
 	return (0);
 }*/
