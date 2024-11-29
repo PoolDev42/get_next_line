@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 20:20:00 by lcalero           #+#    #+#             */
-/*   Updated: 2024/11/28 22:00:51 by lcalero          ###   ########.fr       */
+/*   Updated: 2024/11/29 10:17:44 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-#include <fcntl.h>
+/*#include <fcntl.h>
 int	main(void)
 {
 	int fd = open("test.txt", O_RDONLY);
@@ -63,4 +63,4 @@ int	main(void)
 	free(line);
 	close(fd);
 	return (0);
-}
+}*/
