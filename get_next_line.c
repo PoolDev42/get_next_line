@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 20:20:00 by lcalero           #+#    #+#             */
-/*   Updated: 2024/11/29 10:17:44 by lcalero          ###   ########.fr       */
+/*   Updated: 2024/11/29 12:07:50 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,51 +16,52 @@
 #include <stdio.h>
 char	*get_next_line(int fd)
 {
-	char			buffer[BUFFER_SIZE];
-	static char		*remainder = NULL;
+	char			buffer[BUFFER_SIZE + 1] = {0};
 	char			*line;
-	static int		nb_bytes = 0;
+	int				index;
 
-	if (nb_bytes <= 0)
-		nb_bytes = read(fd, buffer, BUFFER_SIZE);
-	if (!nb_bytes)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	if (!remainder)
-		remainder = strdup(buffer);
-	else
-	{
-		remainder = strchr(remainder, '\n');
-		if (!remainder)
-			return (NULL);
-	}
-	buffer[nb_bytes] = '\0';
-	if (remainder[0] == '\n')
-		remainder++;
-	line = ft_substr(remainder, 0, find_next_null(remainder) + 1);
+	index = 1;
+	line = ft_strdup(buffer);
 	if (!line)
 		return (NULL);
+	while (index > 0 && !strchr(line, '\n'))
+	{
+		index = read(fd, buffer, BUFFER_SIZE);
+		if (index == -1)
+			return (free(line), NULL);
+		buffer[index] = '\0';
+		line = ft_strjoin_free(line, buffer);
+		if (!line)
+			return (NULL);
+	}
+	if (index == 0 && !line[0])
+		return (free(line), NULL);
+	printf("\n%s\n", buffer);
+	ft_update(buffer);
 	return (line);
 }
 
-/*#include <fcntl.h>
+#include <fcntl.h>
 int	main(void)
 {
 	int fd = open("test.txt", O_RDONLY);
 	char* line = get_next_line(fd);
-	printf("%s", line);
+	//printf("%s", line);
 	free(line);
 	line = get_next_line(fd);
-	printf("%s", line);
+	//printf("%s", line);
 	free(line);
 	line = get_next_line(fd);
-	printf("%s", line);
+	//printf("%s", line);
 	free(line);
 	line = get_next_line(fd);
-	printf("%s", line);
+	//printf("%s", line);
 	free(line);
 	line = get_next_line(fd);
-	printf("%s", line);
+	//printf("%s", line);
 	free(line);
 	close(fd);
 	return (0);
-}*/
+}

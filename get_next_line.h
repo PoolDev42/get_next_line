@@ -10,9 +10,11 @@
 
 char	*get_next_line(int fd);
 
-int		find_next_null(char *s);
+char	*ft_strjoin_free(char *s1, char *s2);
 
-char    *ft_substr(char const *s, unsigned int start, size_t len);
+void	*ft_memcpy(void *dest, const void *src, size_t n);
+
+void	ft_update(char *str);
 
 char	*ft_strdup(const char *s);
 
