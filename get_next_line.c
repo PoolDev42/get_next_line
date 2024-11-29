@@ -6,13 +6,13 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 20:20:00 by lcalero           #+#    #+#             */
-/*   Updated: 2024/11/29 13:59:45 by lcalero          ###   ########.fr       */
+/*   Updated: 2024/11/29 16:27:04 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void	ft_bzero(void *s, size_t n)
+static void	ft_bzero(void *s, size_t n)
 {
 	unsigned char	*p;
 
@@ -25,7 +25,7 @@ void	ft_bzero(void *s, size_t n)
 	}
 }
 
-char	*ft_strchr(const char *s, int c)
+static char	*ft_strchr(const char *s, int c)
 {
 	int		i;
 	int		firstindex;
