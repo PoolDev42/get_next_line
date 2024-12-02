@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 20:20:00 by lcalero           #+#    #+#             */
-/*   Updated: 2024/11/29 16:27:04 by lcalero          ###   ########.fr       */
+/*   Updated: 2024/12/02 10:57:27 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-/*#include <fcntl.h>
-#include <stdio.h>
+/*#include <stdio.h>
+#include <fcntl.h>
 int	main(void)
 {
 	int fd = open("test.txt", O_RDONLY);
