@@ -6,7 +6,7 @@
 /*   By: lcalero <lcalero@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 20:20:00 by lcalero           #+#    #+#             */
-/*   Updated: 2024/12/02 10:57:27 by lcalero          ###   ########.fr       */
+/*   Updated: 2024/12/02 13:27:55 by lcalero          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	main(void)
 	char *line;
 	while ((line = get_next_line(fd)) != NULL)
 	{
-		printf("%s", line);
+		//printf("%s", line);
 		free(line);
 	}
 	return (0);
